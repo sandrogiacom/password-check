@@ -133,5 +133,15 @@ This project is a case study to exemplify the development of a password pattern 
 
 - Leaving the parameters configurable was a decision in order to facilitate the configuration and not need to recompile the project.
 
-- **TODO:** Maybe use the Step Builder pattern to assemble the validation regular expression.
+- **TODO:** 
+  - Maybe use the Step Builder pattern to assemble the validation regular expression.
 
+## Code coverage
+
+To verify code coverage, run:
+
+```shell
+mvn clean install
+```
+
+Open the generated HTML in the folder: target/site/jacoco/index.html
