@@ -87,6 +87,9 @@ This file is based on sun_checks.xml with customizations marked with ***
     <!-- Allow suppressing with an annotation -->
     <module name="SuppressWarningsFilter"/>
 
+    <module name="LineLength">
+        <property name="max" value="180"/> <!-- *** increased length to 120 -->
+    </module>
 
     <module name="TreeWalker">
         <!-- Checks for Naming Conventions.                  -->
@@ -120,9 +123,6 @@ This file is based on sun_checks.xml with customizations marked with ***
 
         <!-- Checks for Size Violations.                    -->
         <!-- See http://checkstyle.sf.net/config_sizes.html -->
-        <module name="LineLength">
-            <property name="max" value="180"/> <!-- *** increased length to 120 -->
-        </module>
         <module name="MethodLength"/>
         <module name="ParameterNumber">
             <property name="max" value="10"/>
