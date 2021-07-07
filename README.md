@@ -40,6 +40,11 @@ Other validations will be performed according to the configured rules defined by
 ```shell
 docker run -p 8080:8080 --name password-check sandrogiacom/password-check
 ```
+To test:
+
+```shell
+curl -X POST "http://localhost:8080/api/v1/passwords" -d "Pasword@123"
+```
 
 ### With docker compose
 
@@ -72,7 +77,7 @@ mvn spring-boot:run
 [http://localhost:8080/swagger-ui/](http://localhost:8080/swagger-ui/)
 
 
-## Configuration
+## Configurations
 
 To customize password validation requirements, you can set the environment variables below:
 
@@ -112,7 +117,8 @@ curl -X GET "http://localhost:8080/api/v1/configurations"
 
 ## About this project
 
-This project is a case study to exemplify the development of a password pattern validation service. The project follows good engineering and code quality practices, such as:
+This project is a case study to exemplify the development of a password pattern validation service. The project 
+follows good software engineering and code quality practices, such as:
 
 - Clean Code
 - SOLID
