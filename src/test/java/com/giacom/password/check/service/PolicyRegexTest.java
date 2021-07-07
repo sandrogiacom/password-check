@@ -14,8 +14,8 @@ class PolicyRegexTest {
     void whenGetPolicyRegexMinimumLengthThenCheckRegex() {
         var policyConfig = PasswordPolicyConfigBuilder.of()
                 .minimumLength(9).build();
-        var policyRegex = new PolicyRegex();
-        var regex = policyRegex.getPolicyRegex(policyConfig);
+        var policyRegex = new PolicyRegex(policyConfig);
+        var regex = policyRegex.getPolicyRegex();
         assertThat(regex).isEqualTo("(.{9,0})");
     }
 
@@ -24,8 +24,8 @@ class PolicyRegexTest {
     void whenGetPolicyRegexMaximumLengthThenCheckRegex() {
         var policyConfig = PasswordPolicyConfigBuilder.of()
                 .maximumLength(50).build();
-        var policyRegex = new PolicyRegex();
-        var regex = policyRegex.getPolicyRegex(policyConfig);
+        var policyRegex = new PolicyRegex(policyConfig);
+        var regex = policyRegex.getPolicyRegex();
         assertThat(regex).isEqualTo("(.{0,50})");
     }
 
@@ -34,8 +34,8 @@ class PolicyRegexTest {
     void whenGetPolicyRegexMinimumLowerCaseLettersThenCheckRegex() {
         var policyConfig = PasswordPolicyConfigBuilder.of()
                 .minimumLowerCaseLetters(1).build();
-        var policyRegex = new PolicyRegex();
-        var regex = policyRegex.getPolicyRegex(policyConfig);
+        var policyRegex = new PolicyRegex(policyConfig);
+        var regex = policyRegex.getPolicyRegex();
         assertThat(regex).isEqualTo("((?=.*[a-z]).{0,0})");
     }
 
@@ -44,8 +44,8 @@ class PolicyRegexTest {
     void whenGetPolicyRegexMinimumUpperCaseLettersThenCheckRegex() {
         var policyConfig = PasswordPolicyConfigBuilder.of()
                 .minimumUpperCaseLetters(1).build();
-        var policyRegex = new PolicyRegex();
-        var regex = policyRegex.getPolicyRegex(policyConfig);
+        var policyRegex = new PolicyRegex(policyConfig);
+        var regex = policyRegex.getPolicyRegex();
         assertThat(regex).isEqualTo("((?=.*[A-Z]).{0,0})");
     }
 
@@ -54,8 +54,8 @@ class PolicyRegexTest {
     void whenGetPolicyRegexMinimumNumbersThenCheckRegex() {
         var policyConfig = PasswordPolicyConfigBuilder.of()
                 .minimumNumbers(1).build();
-        var policyRegex = new PolicyRegex();
-        var regex = policyRegex.getPolicyRegex(policyConfig);
+        var policyRegex = new PolicyRegex(policyConfig);
+        var regex = policyRegex.getPolicyRegex();
         assertThat(regex).isEqualTo("((?=.*\\d).{0,0})");
     }
 
@@ -65,8 +65,8 @@ class PolicyRegexTest {
         var policyConfig = PasswordPolicyConfigBuilder.of()
                 .acceptedSpecialCharacters("#$%&@!")
                 .minimumSpecialCharacters(1).build();
-        var policyRegex = new PolicyRegex();
-        var regex = policyRegex.getPolicyRegex(policyConfig);
+        var policyRegex = new PolicyRegex(policyConfig);
+        var regex = policyRegex.getPolicyRegex();
         assertThat(regex).isEqualTo("((?=.*[#$%&@!]).{0,0})");
     }
 
@@ -82,8 +82,8 @@ class PolicyRegexTest {
                 .minimumSpecialCharacters(1)
                 .acceptedSpecialCharacters("!@#$%^&*()-+")
                 .build();
-        var policyRegex = new PolicyRegex();
-        var regex = policyRegex.getPolicyRegex(policyConfig);
+        var policyRegex = new PolicyRegex(policyConfig);
+        var regex = policyRegex.getPolicyRegex();
         assertThat(regex).isEqualTo("((?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&*()-+]).{9,99})");
     }
 }

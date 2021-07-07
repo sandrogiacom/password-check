@@ -23,7 +23,7 @@ public class PasswordCheckService {
         if (hasBlankChars(password) || hasDuplicateChars(password)) {
             return false;
         }
-        String regex = policyRegex.getPolicyRegex(config);
+        String regex = policyRegex.getPolicyRegex();
         Pattern pattern = Pattern.compile(regex);
 
         return pattern.matcher(password).matches();

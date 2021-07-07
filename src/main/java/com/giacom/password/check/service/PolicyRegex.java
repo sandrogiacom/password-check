@@ -10,8 +10,11 @@ public class PolicyRegex {
 
     private PasswordPolicyConfig config;
 
-    public String getPolicyRegex(PasswordPolicyConfig policyConfig) {
+    public PolicyRegex(PasswordPolicyConfig policyConfig) {
         this.config = policyConfig;
+    }
+
+    public String getPolicyRegex() {
         var regex = new StringBuilder("(");
         regex.append(minimumLowerCaseLetters())
                 .append(minimumUpperCaseLetters())
