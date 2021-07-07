@@ -114,6 +114,35 @@ class PasswordCheckServiceTest {
     }
 
     @Test
+    @DisplayName("Password with blank character returns false")
+    void whenPasswordIsBlankThenReturnFalse() {
+        var policyConfig = getDefaultPolicyConfig();
+        passwordCheckService = new PasswordCheckService(policyRegex, policyConfig);
+        var password = "";
+        Boolean isValid = passwordCheckService.checkPassword(password);
+        assertThat(isValid).isFalse();
+    }
+
+    @Test
+    @DisplayName("Password with blank space character returns false")
+    void whenPasswordIsBlankSpaceThenReturnFalse() {
+        var policyConfig = getDefaultPolicyConfig();
+        passwordCheckService = new PasswordCheckService(policyRegex, policyConfig);
+        var password = " ";
+        Boolean isValid = passwordCheckService.checkPassword(password);
+        assertThat(isValid).isFalse();
+    }
+
+    @Test
+    @DisplayName("Password with null character returns false")
+    void whenPasswordIsNullThenReturnFalse() {
+        var policyConfig = getDefaultPolicyConfig();
+        passwordCheckService = new PasswordCheckService(policyRegex, policyConfig);
+        Boolean isValid = passwordCheckService.checkPassword(null);
+        assertThat(isValid).isFalse();
+    }
+
+    @Test
     @DisplayName("Password with repeated character returns false")
     void whenPasswordWithRepeatedCharThenReturnFalse() {
         var policyConfig = getDefaultPolicyConfig();

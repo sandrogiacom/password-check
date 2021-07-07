@@ -12,7 +12,7 @@ import com.giacom.password.check.BaseIT;
 public class ConfigurationControllerIT extends BaseIT {
 
     @Test
-    @DisplayName("")
+    @DisplayName("Settings are correctly configured")
     public void whenGetConfigurationsThenCheckResponseBody() {
         given()
                 .when()
