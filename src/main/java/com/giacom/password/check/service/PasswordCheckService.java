@@ -23,14 +23,14 @@ public class PasswordCheckService {
         if (hasBlankChars(password) || hasDuplicateChars(password)) {
             return false;
         }
-        var policyRegex = this.policyRegex.getPolicyRegex(config);
-        Pattern pattern = Pattern.compile(policyRegex);
+        String regex = policyRegex.getPolicyRegex(config);
+        Pattern pattern = Pattern.compile(regex);
 
         return pattern.matcher(password).matches();
     }
 
     private boolean hasBlankChars(String password) {
-        return (password == null || password.isEmpty() || password.contains("\u0020"));
+        return password == null || password.isEmpty() || password.contains("\u0020");
     }
 
     private boolean hasDuplicateChars(String password) {
