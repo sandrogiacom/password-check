@@ -8,23 +8,23 @@ import com.giacom.password.check.config.PasswordPolicyConfig;
 @Component
 public class PolicyRegex {
 
-    public String getPolicyRegex(PasswordPolicyConfig config) {
-        StringBuilder regex = new StringBuilder("(");
-        if (config.getMinimumLowerCaseLetters() > 0) {
-            regex.append("(?=");
-            regex.append(repeat(".*[a-z]", config.getMinimumLowerCaseLetters()));
-            regex.append(")");
-        }
-        if (config.getMinimumUpperCaseLetters() > 0) {
-            regex.append("(?=");
-            regex.append(repeat(".*[A-Z]", config.getMinimumUpperCaseLetters()));
-            regex.append(")");
-        }
-        if (config.getMinimumNumbers() > 0) {
-            regex.append("(?=");
-            regex.append(repeat(".*\\d", config.getMinimumNumbers()));
-            regex.append(")");
-        }
+    private PasswordPolicyConfig config;
+
+    public String getPolicyRegex(PasswordPolicyConfig policyConfig) {
+        this.config = policyConfig;
+        var regex = new StringBuilder("(");
+        regex.append(minimumLowerCaseLetters())
+                .append(minimumUpperCaseLetters())
+                .append(minimumNumbers())
+                .append(minimumSpecialCharacters())
+                .append(".{")
+                .append(config.getMinimumLength()).append(",")
+                .append(config.getMaximumLength()).append("})");
+        return regex.toString();
+    }
+
+    private String minimumSpecialCharacters() {
+        var regex = new StringBuilder();
         if (config.getMinimumSpecialCharacters() > 0
                 && (config.getAcceptedSpecialCharacters() != null
                 && !config.getAcceptedSpecialCharacters().isEmpty())) {
@@ -34,10 +34,36 @@ public class PolicyRegex {
                     config.getMinimumSpecialCharacters()));
             regex.append(")");
         }
-        regex.append(".{");
-        regex.append(config.getMinimumLength()).append(",");
-        regex.append(config.getMaximumLength()).append("})");
+        return regex.toString();
+    }
 
+    private String minimumNumbers() {
+        var regex = new StringBuilder();
+        if (config.getMinimumNumbers() > 0) {
+            regex.append("(?=");
+            regex.append(repeat(".*\\d", config.getMinimumNumbers()));
+            regex.append(")");
+        }
+        return regex.toString();
+    }
+
+    private String minimumUpperCaseLetters() {
+        var regex = new StringBuilder();
+        if (config.getMinimumUpperCaseLetters() > 0) {
+            regex.append("(?=");
+            regex.append(repeat(".*[A-Z]", config.getMinimumUpperCaseLetters()));
+            regex.append(")");
+        }
+        return regex.toString();
+    }
+
+    private String minimumLowerCaseLetters() {
+        var regex = new StringBuilder();
+        if (config.getMinimumLowerCaseLetters() > 0) {
+            regex.append("(?=");
+            regex.append(repeat(".*[a-z]", config.getMinimumLowerCaseLetters()));
+            regex.append(")");
+        }
         return regex.toString();
     }
 
