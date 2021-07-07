@@ -31,6 +31,8 @@ Define a password pattern with requirements that can be passed by environment va
 
 By default, the service **does not** accept passwords with **blanks** in any position and **repeating characters**.
 
+Other validations will be performed according to the configured rules defined by the requirements above
+
 ## Running
 
 ### With docker
@@ -78,6 +80,12 @@ To customize password validation requirements, you can set the environment varia
 |MINIMUM_UPPERCASE_LETTERS      | Minimum uppercase letters             |1              |
 |MINIMUM_SPECIAL_CHARACTERS     | Minimum of special characters         |1              |
 |ACCEPTED_SPECIAL_CHARACTERS    | Set of special characters allowed     |!@#$%^&*()-+   |
+
+To **disable** any of the settings, just enter the value zero. Ex:
+
+`MINIMUM_SPECIAL_CHARACTERS=0`
+
+This setting disables the requirement for at least one special character.
 
 ### Show Configurations
 
