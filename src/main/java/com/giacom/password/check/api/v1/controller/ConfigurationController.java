@@ -1,4 +1,4 @@
-package com.giacom.password.check.controller;
+package com.giacom.password.check.api.v1.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

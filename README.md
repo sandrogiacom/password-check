@@ -107,3 +107,26 @@ curl -X GET "http://localhost:8080/api/v1/configurations"
 
 ## About this project
 
+This project is a case study to exemplify the development of a password pattern validation service. The project follows good engineering and code quality practices, such as:
+
+- Clean Code
+- SOLID
+- API Design
+- Tests
+
+### Application design
+
+- The core of the application is in the service layer, where business rule operations such as getting password validation rules and performing validation are performed.
+
+- The API layer is versioned following the v1, v2 pattern.
+
+- Api Documentation by swagger.
+
+- Unit and integration tests are performed in the build process.
+
+- Part of the validation process uses regex. This decision was to have less code, more effectiveness and facilitate testing
+
+- Leaving the parameters configurable was a decision in order to facilitate the configuration and not need to recompile the project.
+
+- TODO Use the composite pattern to assemble the validation regular expression
+

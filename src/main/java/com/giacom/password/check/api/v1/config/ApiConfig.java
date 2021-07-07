@@ -1,4 +1,4 @@
-package com.giacom.password.check.config;
+package com.giacom.password.check.api.v1.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,7 +15,7 @@ public class ApiConfig {
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.giacom.password.check"))
+                .apis(RequestHandlerSelectors.basePackage("com.giacom.password.check.api.v1"))
                 .paths(PathSelectors.ant("/api/v1/*"))
                 .build();
     }
