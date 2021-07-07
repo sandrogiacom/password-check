@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  password-check:
+    image: sandrogiacom/password-check:latest
+    ports:
+    - 8080:8080
+    environment:
+      - MINIMUM_LENGTH=9
+      - MAXIMUM_LENGTH=99
+      - MINIMUM_UPPERCASE_LETTERS=1
+      - MINIMUM_LOWERCASE_LETTERS=1
+      - MINIMUM_NUMBERS=1
+      - MINIMUM_SPECIAL_CHARACTERS=1
+      - ACCEPTED_SPECIAL_CHARACTERS=!@#$$%?:^&*()-+}<>
+    networks:
+      - local
+networks:
+  local:

@@ -43,11 +43,16 @@ docker run -p 8080:8080 --name password-check sandrogiacom/password-check
 
 ### With docker compose
 
+To make testing easier by changing the environment variables, run docker-compose.
+
 **At the root of the project, run:**
 
 ```shell
 docker-compose up
 ```
+> **Note:** Remember that the `$` character is used as a special in docker-compose, so if the 
+> `ACCEPTED_SPECIAL_CHARACTERS` variable 
+contains the `$` character, you will need to duplicate it. Ex: `!@#$$%?:^&*()-+}<>`. In this case, the system will only consider a `$`.
 
 ## Running the project from source code:
 
@@ -128,5 +133,5 @@ This project is a case study to exemplify the development of a password pattern 
 
 - Leaving the parameters configurable was a decision in order to facilitate the configuration and not need to recompile the project.
 
-- TODO Use the composite pattern to assemble the validation regular expression
+- **TODO:** Use the composite pattern to assemble the validation regular expression
 
